@@ -60,9 +60,9 @@ public class Planet {
         return forceByY;
     }
 
-    public double calcNetForceExertedByX(Planet[] allPlaneties){
+    public double calcNetForceExertedByX(Planet[] allPlanets){
         double netForceByX = 0.0;
-            for(Planet a : allPlaneties){
+            for(Planet a : allPlanets){
                 if (this.equals(a)){
                     netForceByX = netForceByX; // this step is important,if replace this by "break", then you will get nothing when input include this Planet,because break means break entire the loop
                 }
@@ -74,9 +74,9 @@ public class Planet {
         }
         
             
-    public double calcNetForceExertedByY(Planet[] allPlaneties){
+    public double calcNetForceExertedByY(Planet[] allPlanets){
         double netForceByY = 0.0;
-            for(Planet a : allPlaneties){
+            for(Planet a : allPlanets){
                 if (this.equals(a)){
                     netForceByY = netForceByY;
                 }

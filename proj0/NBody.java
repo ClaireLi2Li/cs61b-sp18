@@ -6,7 +6,7 @@ public class NBody{
         return  file.readDouble(); 
     }
 
-    public static Planet[] readBodies(String filename){
+    public static Planet[] readPlanets(String filename){
         In file = new In(filename);
         int planetsNum = file.readInt();// must keep this line otherwise you will give the first line value as radius
         double radius = file.readDouble();//if miss this line then you would not get next value
@@ -29,7 +29,7 @@ public class NBody{
         double dt = Double.parseDouble(args[1]);
 
         String filename = args[2];
-        Planet[] Bodies = NBody.readBodies(filename);
+        Planet[] Bodies = NBody.readPlanets(filename);
         double radius = NBody.readRadius(filename);
 
         StdDraw.setScale(-radius, radius);
