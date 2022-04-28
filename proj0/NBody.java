@@ -6,12 +6,12 @@ public class NBody{
         return  file.readDouble(); 
     }
 
-    public static Body[] readBodies(String filename){
+    public static Planet[] readBodies(String filename){
         In file = new In(filename);
         int planetsNum = file.readInt();// must keep this line otherwise you will give the first line value as radius
         double radius = file.readDouble();//if miss this line then you would not get next value
-        Body[] planetBody = new Body[planetsNum]; // only create 5 pointers which point to null or body and its subclass 
-          //  planetBody[i].xxPos = file.readDouble(); this syntax is wrong, because left is  null  so we can not put value in it 
+        Planet[] planetPlanet = new Planet[planetsNum]; // only create 5 pointers which point to null or Planet and its subclass 
+          //  planetPlanet[i].xxPos = file.readDouble(); this syntax is wrong, because left is  null  so we can not put value in it 
           for(int i = 0;i < planetsNum;i++){
            double xxPos = file.readDouble();
            double yyPos = file.readDouble();
@@ -19,9 +19,9 @@ public class NBody{
            double yyVel = file.readDouble();
            double mass = file.readDouble();
            String imgFileName = file.readString();
-           planetBody[i] = new Body(xxPos,yyPos,xxVel,yyVel,mass,imgFileName);//new object; assign
+           planetPlanet[i] = new Planet(xxPos,yyPos,xxVel,yyVel,mass,imgFileName);//new object; assign
           }
-           return planetBody;
+           return planetPlanet;
     }
 
     public static void main(String[] args){
@@ -29,13 +29,13 @@ public class NBody{
         double dt = Double.parseDouble(args[1]);
 
         String filename = args[2];
-        Body[] Bodies = NBody.readBodies(filename);
+        Planet[] Bodies = NBody.readBodies(filename);
         double radius = NBody.readRadius(filename);
 
         StdDraw.setScale(-radius, radius);
         StdDraw.picture(0,0,"images/starfield.jpg");
         
-        for(Body b:Bodies){
+        for(Planet b:Bodies){
             b.draw();
         }
         StdDraw.enableDoubleBuffering(); // should put doublebuffering after draw otherwise we wouldnot see the planets

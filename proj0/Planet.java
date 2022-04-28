@@ -1,4 +1,4 @@
-public class Body {
+public class Planet {
     public double xxPos ;
     public double yyPos;
     public double xxVel;
@@ -8,7 +8,7 @@ public class Body {
 
 
     /* constructor method so it could be valid without return value  */
-    public Body(double xP, double yP, double xV,
+    public Planet(double xP, double yP, double xV,
               double yV, double m, String img){
                   xxPos = xP;  // left is the property of class  right one is the actual value which is passed via instance
                   yyPos = yP;
@@ -17,9 +17,9 @@ public class Body {
                   mass = m;
                   imgFileName = img;
               }
-    // 2nd way to build a constructor method for the class body
+    // 2nd way to build a constructor method for the class Planet
 
-    public Body(Body b){  // input an object as variable
+    public Planet(Planet b){  // input an object as variable
         xxPos = b.xxPos;
         yyPos = b.yyPos;
         xxVel = b.xxVel;
@@ -29,7 +29,7 @@ public class Body {
 
     }
 
-    public double calcDistance (Body a){
+    public double calcDistance (Planet a){
         double dx2 = Math.pow(this.xxPos - a.xxPos, 2);
         double dy2 = Math.pow(this.yyPos - a.yyPos, 2);
         return Math.sqrt(dx2+dy2);
@@ -37,7 +37,7 @@ public class Body {
 
 
 
-    public double calcForceExertedBy (Body a){
+    public double calcForceExertedBy (Planet a){
         double m1 = this.mass;
         double m2 = a.mass;
         double someNumber = 6.67e-11;
@@ -46,25 +46,25 @@ public class Body {
         return force;
     }
 
-    public double calcForceExertedByX (Body a){
+    public double calcForceExertedByX (Planet a){
         double force = this.calcForceExertedBy(a);
         double dx = a.xxPos - this.xxPos;
         double forceByX = force * dx /this.calcDistance(a);
         return forceByX;
     }
 
-    public double calcForceExertedByY (Body a){
+    public double calcForceExertedByY (Planet a){
         double force = this.calcForceExertedBy(a);
         double dy = a.yyPos - this.yyPos;
         double forceByY = force * dy /this.calcDistance(a);
         return forceByY;
     }
 
-    public double calcNetForceExertedByX(Body[] allBodyies){
+    public double calcNetForceExertedByX(Planet[] allPlaneties){
         double netForceByX = 0.0;
-            for(Body a : allBodyies){
+            for(Planet a : allPlaneties){
                 if (this.equals(a)){
-                    netForceByX = netForceByX; // this step is important,if replace this by "break", then you will get nothing when input include this body,because break means break entire the loop
+                    netForceByX = netForceByX; // this step is important,if replace this by "break", then you will get nothing when input include this Planet,because break means break entire the loop
                 }
                 else{
                 netForceByX = calcForceExertedByX(a) + netForceByX;
@@ -74,9 +74,9 @@ public class Body {
         }
         
             
-    public double calcNetForceExertedByY(Body[] allBodyies){
+    public double calcNetForceExertedByY(Planet[] allPlaneties){
         double netForceByY = 0.0;
-            for(Body a : allBodyies){
+            for(Planet a : allPlaneties){
                 if (this.equals(a)){
                     netForceByY = netForceByY;
                 }
