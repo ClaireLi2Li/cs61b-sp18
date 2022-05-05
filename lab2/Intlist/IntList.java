@@ -82,7 +82,13 @@ public class IntList {
 
     public static IntList dcatenate(IntList A, IntList B) {
         IntList dummy = A;
-        /**fix the first point of A */
+
+        /**fix the first point of A
+         * should not forget to test the null arguments */
+
+        if (A == null){
+            return B;
+        }
         while(dummy.rest != null){
             dummy = dummy .rest;
         }
